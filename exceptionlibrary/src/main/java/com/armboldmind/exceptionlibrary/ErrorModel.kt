@@ -1,5 +1,5 @@
 package com.armboldmind.exceptionlibrary
 
-internal class ErrorModel {
+class ErrorModel {
     var text: String? = null
 }
