@@ -1,39 +1,34 @@
 package com.armboldmind.exceptionlibrary
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
+import com.armboldmind.exceptionlibrary.databinding.ActivityExceptionBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class ExceptionActivity : AppCompatActivity() {
 
+    private lateinit var mBinding: ActivityExceptionBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_exception)
+        mBinding = ActivityExceptionBinding.inflate(layoutInflater)
+        setContentView(mBinding.root)
 
-        val message = intent.getStringExtra("message")
+        mBinding.restartApplication.setOnClickListener {
+            val appPackage = intent.getStringExtra("packageName")
+            if (appPackage != null) {
+                val launchIntent = packageManager.getLaunchIntentForPackage(appPackage)
+                startActivity(launchIntent)
+            }
+        }
 
-        val gson: Gson = GsonBuilder()
-            .setLenient()
-            .create()
+        val model = intent.getParcelableExtra<ErrorModel>("model")
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://hooks.slack.com/")
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
+        val iService = RestService().getRetrofitInstance()
 
-        val IExceptionSendDeveloperControllerAPI = retrofit.create(IExceptionSendDeveloperControllerAPI::class.java)
-
-        val model = ErrorModel()
-        model.text = message
-
-        val call = IExceptionSendDeveloperControllerAPI.loadChanges(model)
+        val call = iService.loadChanges(model)
 
         call?.enqueue(object : Callback<Any?> {
             override fun onResponse(call: Call<Any?>, response: Response<Any?>) {}

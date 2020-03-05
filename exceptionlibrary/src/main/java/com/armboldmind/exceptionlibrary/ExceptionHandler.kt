@@ -4,9 +4,8 @@ import android.app.Application
 import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Process
-import java.io.PrintWriter
-import java.io.StringWriter
 import kotlin.system.exitProcess
 
 object ExceptionHandler {
@@ -19,10 +18,24 @@ object ExceptionHandler {
             throw NullPointerException("ABM key not found")
     }
 
-    fun setUCEHandler() {
+    fun setExceptionHandler() {
         Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
+            val model = ErrorModel()
+            model.key = getApplicationKey()
+            model.text = throwable.message
+            model.manufacture = Build.MANUFACTURER
+            model.deviceModel = Build.MODEL
+            model.deviceModel = Build.MODEL
+
+
+            val stackTrace = throwable.cause?.stackTrace
+            if (!stackTrace.isNullOrEmpty()) {
+                model.className = stackTrace[0]?.className
+                model.crashLine = stackTrace[0]?.lineNumber!!
+            }
             val intent = Intent(mApplication, ExceptionActivity::class.java)
-            intent.putExtra("message", throwable.message)
+            intent.putExtra("model", model)
+            intent.putExtra("packageName",             mApplication.packageName)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             mApplication.startActivity(intent)
             Process.killProcess(Process.myPid())
