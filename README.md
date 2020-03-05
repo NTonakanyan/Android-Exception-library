@@ -6,12 +6,14 @@ Android application crash handler
 
 ####  For implementation
 
+```gradle
 allprojects {
-------repositories {
------------maven { url 'https://jitpack.io' }
-------}
+    repositories {
+	maven { url 'https://jitpack.io' }
+    }
 }
 	
 dependencies {
------implementation 'com.github.NTonakanyan:Android-Exception-library:Tag'
+	implementation 'com.github.NTonakanyan:Android-Exception-library:Tag'
 }
+```
