@@ -18,6 +18,7 @@ object ExceptionHandler {
             throw NullPointerException("ABM key not found")
     }
 
+    @JvmStatic
     fun setExceptionHandler() {
         Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
             val model = ErrorModel()
@@ -35,7 +36,7 @@ object ExceptionHandler {
             }
             val intent = Intent(mApplication, ExceptionActivity::class.java)
             intent.putExtra("model", model)
-            intent.putExtra("packageName",             mApplication.packageName)
+            intent.putExtra("packageName",    mApplication.packageName)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             mApplication.startActivity(intent)
             Process.killProcess(Process.myPid())
