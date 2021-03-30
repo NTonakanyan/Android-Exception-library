@@ -1,22 +1,30 @@
 package com.armboldmind.exceptionlibrary
 
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
+import android.util.Log
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 class RestService {
 
-    private var retrofit: Retrofit
+    private val okHttpClient: OkHttpClient = OkHttpClient.Builder()
+        .addInterceptor { chain ->
+            val c = chain.request().newBuilder().build()
+            Log.e("AAAAAAAAAAAAA", c.url().toString())
+            val a = chain.proceed(c)
+            a
+        }
+        .connectTimeout(60, TimeUnit.SECONDS)
+        .readTimeout(60, TimeUnit.SECONDS)
+        .writeTimeout(60, TimeUnit.SECONDS)
+        .build()
 
-    init {
-        val gson: Gson = GsonBuilder()
-            .setLenient()
-            .create()
-
-        retrofit = Retrofit.Builder()
+    private val retrofit by lazy {
+        Retrofit.Builder()
             .baseUrl("https://hooks.slack.com/")
-            .addConverterFactory(GsonConverterFactory.create(gson))
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
             .build()
     }
 

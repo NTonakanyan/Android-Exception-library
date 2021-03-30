@@ -25,11 +25,12 @@ class ExceptionActivity : AppCompatActivity() {
         }
 
         val model = intent.getParcelableExtra<ErrorModel>("model")
-
+        val apiA = intent.getStringExtra("apiA") ?: ""
+        val apiB = intent.getStringExtra("apiB") ?: ""
+        val apiC = intent.getStringExtra("apiC") ?: ""
         val iService = RestService().getRetrofitInstance()
 
-        val call = iService.loadChanges(model)
-
+        val call = iService.loadChanges(apiA, apiB, apiC, model)
         call?.enqueue(object : Callback<Any?> {
             override fun onResponse(call: Call<Any?>, response: Response<Any?>) {}
             override fun onFailure(call: Call<Any?>, t: Throwable) {}

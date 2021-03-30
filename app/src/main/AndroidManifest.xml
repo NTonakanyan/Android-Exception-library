@@ -24,6 +24,18 @@
             android:name="am.ABM.ApiKey"
             android:value="aaasbbb" />
 
+        <meta-data
+            android:name="slack.api.a"
+            android:value="T01SQ5TN8MT" />
+
+        <meta-data
+            android:name="slack.api.b"
+            android:value="B01SCGUB5AT" />
+
+        <meta-data
+            android:name="slack.api.c"
+            android:value="S4eh4AW3vc3UMyLCqrqtaP0r" />
+
     </application>
 
 </manifest>
