@@ -18,10 +18,8 @@ class ExceptionActivity : AppCompatActivity() {
 
         mBinding.restartApplication.setOnClickListener {
             val appPackage = intent.getStringExtra("packageName")
-            if (appPackage != null) {
-                val launchIntent = packageManager.getLaunchIntentForPackage(appPackage)
-                startActivity(launchIntent)
-            }
+            if (appPackage != null)
+                startActivity(packageManager.getLaunchIntentForPackage(appPackage))
         }
 
         val model = intent.getParcelableExtra<ErrorModel>("model")
