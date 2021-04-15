@@ -1,15 +1,14 @@
 package com.armboldmind.exceptionlibrary
 
-import android.accounts.AccountManager
+import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Process
-import java.util.*
+import android.provider.Settings
 import kotlin.system.exitProcess
-
 
 object ExceptionHandler {
 
@@ -21,12 +20,14 @@ object ExceptionHandler {
             throw NullPointerException("ABM key not found")
     }
 
+    @SuppressLint("HardwareIds")
     @JvmStatic
     fun setExceptionHandler() {
         Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
             val s = "throwable -> ${throwable.message}\n" +
                     "manufacture -> ${Build.MANUFACTURER}\n" +
                     "deviceModel -> ${Build.MODEL}\n" +
+                    "deviceId -> ${Settings.Secure.getString(mApplication.contentResolver, Settings.Secure.ANDROID_ID)}\n" +
                     "threadName -> ${thread.name}\n" +
                     "stackTrace -> ${throwable.stackTraceToString()}"
 
