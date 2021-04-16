@@ -4,11 +4,13 @@ import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Intent
 import android.content.pm.ApplicationInfo
+import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Process
 import android.provider.Settings
 import kotlin.system.exitProcess
+
 
 object ExceptionHandler {
 
@@ -24,10 +26,26 @@ object ExceptionHandler {
     @JvmStatic
     fun setExceptionHandler() {
         Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
+            val pair = try {
+                val pInfo: PackageInfo = mApplication.packageManager.getPackageInfo(mApplication.packageName, 0)
+                Pair(pInfo.versionName, pInfo.versionCode)
+            } catch (e: PackageManager.NameNotFoundException) {
+                e.printStackTrace()
+                Pair("unavailable", 0)
+            }
+
             val s = "throwable -> ${throwable.message}\n" +
                     "manufacture -> ${Build.MANUFACTURER}\n" +
                     "deviceModel -> ${Build.MODEL}\n" +
-                    "deviceId -> ${Settings.Secure.getString(mApplication.contentResolver, Settings.Secure.ANDROID_ID)}\n" +
+                    "versionName -> ${pair.first}\n" +
+                    "versionCode -> ${pair.second}\n" +
+                    "deviceModel -> ${Build.MODEL}\n" +
+                    "deviceId -> ${
+                        Settings.Secure.getString(
+                            mApplication.contentResolver,
+                            Settings.Secure.ANDROID_ID
+                        )
+                    }\n" +
                     "threadName -> ${thread.name}\n" +
                     "stackTrace -> ${throwable.stackTraceToString()}"
 
