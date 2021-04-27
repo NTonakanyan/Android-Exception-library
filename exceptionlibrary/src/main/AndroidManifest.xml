@@ -7,7 +7,7 @@
             android:name=".ExceptionActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/NoActionBar" />
     </application>
 
 </manifest>
