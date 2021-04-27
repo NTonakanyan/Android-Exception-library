@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ExceptionActivity">
+    android:paddingHorizontal="30dp">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animate"
@@ -29,8 +28,8 @@
         android:padding="10dp"
         android:text="Oops"
         android:textColor="@android:color/black"
-        android:textStyle="bold"
         android:textSize="19sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent "
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/animate" />
@@ -40,10 +39,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="17sp"
         android:padding="15dp"
         android:text="We are apologize for the issue.It has already been sent to our developers team to fix it. Thank you for staying with us."
         android:textColor="@android:color/black"
+        android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
@@ -52,10 +51,10 @@
         android:id="@+id/restart_application"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/darker_gray"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/background_button"
         android:paddingHorizontal="25dp"
         android:paddingVertical="15dp"
-        android:layout_marginTop="20dp"
         android:text="Restart application"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"

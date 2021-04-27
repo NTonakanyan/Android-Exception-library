@@ -40,12 +40,8 @@ object ExceptionHandler {
                     "versionName -> ${pair.first}\n" +
                     "versionCode -> ${pair.second}\n" +
                     "deviceModel -> ${Build.MODEL}\n" +
-                    "deviceId -> ${
-                        Settings.Secure.getString(
-                            mApplication.contentResolver,
-                            Settings.Secure.ANDROID_ID
-                        )
-                    }\n" +
+                    "androidVersionName -> ${Build.VERSION.CODENAME}\n" +
+                    "deviceId -> ${Settings.Secure.getString(mApplication.contentResolver, Settings.Secure.ANDROID_ID)}\n" +
                     "threadName -> ${thread.name}\n" +
                     "stackTrace -> ${throwable.stackTraceToString()}"
 
@@ -74,19 +70,13 @@ object ExceptionHandler {
     }
 
     private fun getApplicationKey(): String? {
-        val app: ApplicationInfo? = mApplication.packageManager?.getApplicationInfo(
-            mApplication.packageName,
-            PackageManager.GET_META_DATA
-        )
+        val app: ApplicationInfo? = mApplication.packageManager?.getApplicationInfo(mApplication.packageName, PackageManager.GET_META_DATA)
         val bundle = app?.metaData
         return bundle?.getString("am.ABM.ApiKey")
     }
 
     private fun getApi(): Triple<String?, String?, String?> {
-        val app: ApplicationInfo? = mApplication.packageManager?.getApplicationInfo(
-            mApplication.packageName,
-            PackageManager.GET_META_DATA
-        )
+        val app: ApplicationInfo? = mApplication.packageManager?.getApplicationInfo(mApplication.packageName, PackageManager.GET_META_DATA)
         val bundle = app?.metaData
         val a = bundle?.getString("slack.api.a")
         val b = bundle?.getString("slack.api.b")

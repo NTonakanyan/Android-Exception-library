@@ -8,6 +8,6 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        throw  NullPointerException("Test")
+        throw  NullPointerException("Test By Narek Tonakanyan")
     }
 }

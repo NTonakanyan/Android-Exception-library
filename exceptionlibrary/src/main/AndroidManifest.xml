@@ -5,8 +5,8 @@
     <application>
         <activity
             android:name=".ExceptionActivity"
-            android:screenOrientation="portrait"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
     </application>
 

@@ -1,5 +1,6 @@
 package com.armboldmind.exceptionlibrary
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.armboldmind.exceptionlibrary.databinding.ActivityExceptionBinding
@@ -9,17 +10,19 @@ import retrofit2.Response
 
 class ExceptionActivity : AppCompatActivity() {
 
-    private lateinit var mBinding: ActivityExceptionBinding
+    private val _binding by lazy { ActivityExceptionBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = ActivityExceptionBinding.inflate(layoutInflater)
-        setContentView(mBinding.root)
+        window.handleWindowState()
+        setContentView(_binding.root)
 
-        mBinding.restartApplication.setOnClickListener {
+        _binding.restartApplication.setOnClickListener {
             val appPackage = intent.getStringExtra("packageName")
             if (appPackage != null) {
-                startActivity( applicationContext.packageManager.getLaunchIntentForPackage(appPackage))
+                val i = applicationContext.packageManager.getLaunchIntentForPackage(appPackage)
+                i?.data = Uri.parse(appPackage)
+                startActivity(i)
                 finish()
             }
         }
