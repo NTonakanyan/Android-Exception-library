@@ -14,13 +14,13 @@ How to implement dependecy
             android:value="aaasbbb" />
         <meta-data
             android:name="slack.api.a"
-            android:value="T01SQ5TN8MT" />
+            android:value="you key here" />
         <meta-data
             android:name="slack.api.b"
-            android:value="B01SCGUB5AT" />
+            android:value="you key here" />
 	<meta-data
             android:name="slack.api.c"
-            android:value="S4eh4AW3vc3UMyLCqrqtaP0r" />
+            android:value="you key here" />
 	    ```
 	    
 4. Add ExceptionHandler.setExceptionHandler() on yout BaseActivity class
