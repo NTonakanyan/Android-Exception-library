@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class ErrorModel(
+internal data class ErrorModel(
     var key: String? = null,
     var text: String? = null,
     var className: String? = null,

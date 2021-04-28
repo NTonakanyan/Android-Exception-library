@@ -1,17 +1,15 @@
 package com.armboldmind.exceptionlibrary
 
-import android.util.Log
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class RestService {
+internal class RestService {
 
     private val okHttpClient: OkHttpClient = OkHttpClient.Builder()
         .addInterceptor { chain ->
             val c = chain.request().newBuilder().build()
-            Log.e("AAAAAAAAAAAAA", c.url().toString())
             val a = chain.proceed(c)
             a
         }

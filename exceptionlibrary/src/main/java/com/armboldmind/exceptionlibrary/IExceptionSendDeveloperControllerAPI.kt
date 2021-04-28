@@ -5,7 +5,7 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 import retrofit2.http.Path
 
-interface IExceptionSendDeveloperControllerAPI {
+internal interface IExceptionSendDeveloperControllerAPI {
     @POST("/services/{apiA}/{apiB}/{apiC}")
     fun loadChanges(
         @Path("apiA") apiA: String,

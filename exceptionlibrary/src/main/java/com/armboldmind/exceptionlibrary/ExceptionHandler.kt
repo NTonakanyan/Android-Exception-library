@@ -12,7 +12,7 @@ import android.provider.Settings
 import kotlin.system.exitProcess
 
 
-object ExceptionHandler {
+internal object ExceptionHandler {
 
     lateinit var mApplication: Application
 

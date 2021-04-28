@@ -7,7 +7,7 @@ import android.view.WindowInsetsController
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 
-fun Window.handleWindowState(isFullScreen: Boolean = true, isLightStatusBar: Boolean = true, isLightNavBar: Boolean = true) {
+internal fun Window.handleWindowState(isFullScreen: Boolean = true, isLightStatusBar: Boolean = true, isLightNavBar: Boolean = true) {
     when {
         Build.VERSION.SDK_INT >= Build.VERSION_CODES.R -> {
             if (isFullScreen)

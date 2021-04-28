@@ -8,7 +8,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ExceptionActivity : AppCompatActivity() {
+internal class ExceptionActivity : AppCompatActivity() {
 
     private val _binding by lazy { ActivityExceptionBinding.inflate(layoutInflater) }
 
