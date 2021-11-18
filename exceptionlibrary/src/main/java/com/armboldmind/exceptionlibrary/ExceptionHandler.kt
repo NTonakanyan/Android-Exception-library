@@ -18,8 +18,6 @@ internal object ExceptionHandler {
 
     fun init(application: Application) {
         mApplication = application
-        if (getApplicationKey() == null)
-            throw NullPointerException("ABM key not found")
     }
 
     @SuppressLint("HardwareIds")
@@ -46,7 +44,6 @@ internal object ExceptionHandler {
                     "stackTrace -> ${throwable.stackTraceToString()}"
 
             val model = ErrorModel()
-            model.key = getApplicationKey()
             model.text = s
             model.manufacture = Build.MANUFACTURER
             model.deviceModel = Build.MODEL
@@ -69,11 +66,6 @@ internal object ExceptionHandler {
         }
     }
 
-    private fun getApplicationKey(): String? {
-        val app: ApplicationInfo? = mApplication.packageManager?.getApplicationInfo(mApplication.packageName, PackageManager.GET_META_DATA)
-        val bundle = app?.metaData
-        return bundle?.getString("am.ABM.ApiKey")
-    }
 
     private fun getApi(): Triple<String?, String?, String?> {
         val app: ApplicationInfo? = mApplication.packageManager?.getApplicationInfo(mApplication.packageName, PackageManager.GET_META_DATA)

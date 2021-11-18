@@ -9,11 +9,6 @@ fun startExceptionHandler(app: Application) {
     app.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
         override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
             ExceptionHandler.setExceptionHandler()
-//            if (activity is AppCompatActivity) {
-//                activity.supportFragmentManager.addOnBackStackChangedListener {
-//
-//                }
-//            }
         }
 
         override fun onActivityStarted(activity: Activity) {
