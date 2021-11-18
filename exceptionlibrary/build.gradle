@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
+    id 'maven-publish'
 }
 
 android {
@@ -49,5 +50,5 @@ dependencies {
     // Lottie
     implementation 'com.airbnb.android:lottie:4.1.0'
 
-    implementation 'com.github.jitpack:gradle-simple:1.0'
+    implementation 'com.github.jitpack:android-example:1.0.1'
 }
