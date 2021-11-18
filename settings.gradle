@@ -3,10 +3,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        jcenter()
         maven { url "https://jitpack.io" }
     }
 }
 rootProject.name = 'Exception library demo'
-include ':app'
 include ':exceptionlibrary'

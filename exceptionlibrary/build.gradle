@@ -50,17 +50,3 @@ dependencies {
     // Lottie
     implementation 'com.airbnb.android:lottie:4.1.0'
 }
-
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                from components.release
-                groupId = 'com.github.jitpack'
-                artifactId = 'android-example'
-                version = '0.2.4'
-            }
-        }
-    }
-}
