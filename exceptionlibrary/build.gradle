@@ -48,4 +48,6 @@ dependencies {
 
     // Lottie
     implementation 'com.airbnb.android:lottie:4.1.0'
+
+    implementation 'com.github.jitpack:gradle-simple:1.0'
 }
