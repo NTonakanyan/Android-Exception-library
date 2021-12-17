@@ -4,9 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
     id 'maven-publish'
-//    id 'signing'
 }
-//apply from: 'versioning.gradle'
 
 android {
     compileSdk 31
@@ -56,12 +54,12 @@ dependencies {
 afterEvaluate {
     publishing {
         publications {
-            aar(MavenPublication) {
+//            aar(MavenPublication) {
 //                from components.release
 //                artifactId = 'interactive-info-window-android'
 //                groupId = "com.appolica"
 //                version = getVersionName()
-            }
+//            }
         }
     }
 }
