@@ -4,9 +4,9 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
     id 'maven-publish'
-    id 'signing'
+//    id 'signing'
 }
-apply from: 'versioning.gradle'
+//apply from: 'versioning.gradle'
 
 android {
     compileSdk 31
@@ -57,10 +57,10 @@ afterEvaluate {
     publishing {
         publications {
             aar(MavenPublication) {
-                from components.release
-                artifactId = 'interactive-info-window-android'
-                groupId = "com.appolica"
-                version = getVersionName()
+//                from components.release
+//                artifactId = 'interactive-info-window-android'
+//                groupId = "com.appolica"
+//                version = getVersionName()
             }
         }
     }
@@ -68,20 +68,6 @@ afterEvaluate {
 
 publishing {
     repositories {
-        maven {
-            url = 'https://jitpack.io'
-//            url = 'https://s01.oss.sonatype.org/content/repositories/snapshots/'   // Repository for snapshot versions of library.
-//            credentials {
-//                username = ossrhUsername
-//                password = ossrhPassword
-//            }
-        }
+        maven { url "https://jitpack.io" }
     }
-}
-
-signing {
-    def signingKeyId = findProperty("signing.keyId")
-    def signingPassword = findProperty("signing.password")
-    def signingKey = findProperty("signing.secretKeyRingFile")
-    useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
 }
