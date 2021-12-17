@@ -69,7 +69,7 @@ afterEvaluate {
 publishing {
     repositories {
         maven {
-            url = 'https://s01.oss.sonatype.org/content/repositories/releases/'
+            url = 'https://jitpack.io'
 //            url = 'https://s01.oss.sonatype.org/content/repositories/snapshots/'   // Repository for snapshot versions of library.
 //            credentials {
 //                username = ossrhUsername
