@@ -54,18 +54,19 @@ dependencies {
 afterEvaluate {
     publishing {
         publications {
-//            aar(MavenPublication) {
-//                from components.release
-//                artifactId = 'interactive-info-window-android'
-//                groupId = "com.appolica"
-//                version = getVersionName()
-//            }
+            aar(MavenPublication) {
+                artifactId = 'exeption-library'
+                groupId = "com.exeption.library"
+            }
         }
-    }
-}
-
-publishing {
-    repositories {
-        maven { url "https://jitpack.io" }
+        repositories {
+            maven {
+                url "https://maven.pkg.github.com/96596325/test"
+                credentials {
+                    username = "NTonakanyan"
+                    password = "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"
+                }
+            }
+        }
     }
 }
