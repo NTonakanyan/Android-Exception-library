@@ -42,7 +42,4 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 //    implementation project(path: ':exceptionlibrary')
     implementation 'com.github.NTonakanyan:exceptionlibrary:0.3.0'
-//    implementation "com.exception.libraries:exceptionlib:0.3.0"
-//    implementation "com.chenzhang2006.libraries:droidlib2:3.0.1"
-
 }
