@@ -2,9 +2,9 @@
   "name": "exception_library",
   "version": "1.0.0",
   "description": "",
-  "main": "package: @NTonakanyan/Android-Exception-library",
+  "main": "exception_library: @NTonakanyan/Android-Exception-library",
   "scripts": {
-    "test": "package: @NTonakanyan/Android-Exception-library"
+    "test": "exception_library: @NTonakanyan/Android-Exception-library"
   },
   "publishConfig": {
     "@NTonakanyan:registry": "https://npm.pkg.github.com"
