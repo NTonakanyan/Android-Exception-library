@@ -31,11 +31,11 @@ How to implement dependecy
 ```gradle
 allprojects {
     repositories {
-	maven { url 'https://jitpack.io' }
+	maven { url = "https://maven.pkg.github.com/NTonakanyan/Android-Exception-library" }
     }
 }
 	
 dependencies {
-	implementation 'com.github.NTonakanyan:Android-Exception-library:Tag'
+	implementation 'com.github.NTonakanyan:exceptionlibrary:Tag'
 }
 ```
