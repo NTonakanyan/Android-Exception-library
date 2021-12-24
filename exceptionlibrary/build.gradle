@@ -5,6 +5,7 @@ plugins {
     id 'kotlin-parcelize'
     id 'maven-publish'
 }
+apply from: file('publish.gradle')
 
 android {
     compileSdk 31
@@ -49,58 +50,4 @@ dependencies {
 
     // Lottie
     implementation 'com.airbnb.android:lottie:4.2.1'
-}
-
-//publishing {
-//    publications {
-//        bar(MavenPublication) {
-//            artifact(sourceJar)
-//            artifact("$buildDir/outputs/aar/bar-release.aar")
-//            groupId 'com.enefce.libraries'
-//            artifactId getArtificatId()
-//            version getVersionName()
-//            artifact("$buildDir/outputs/aar/${getArtificatId()}-release.aar")
-//        }
-//    }
-//
-//    repositories {
-//        maven {
-//            name = "GitHubPackages"
-//            /** Configure path of your package repository on Github
-//             *  Replace GITHUB_USERID with your/organisation Github userID and REPOSITORY with the repository name on GitHub
-//             */
-//            url uri("https://maven.pkg.github.com/96596325/Android-Exception-library")
-//
-//
-//            credentials {
-//                /**Create github.properties in root project folder file with gpr.usr=GITHUB_USER_ID  & gpr.key=PERSONAL_ACCESS_TOKEN**/
-////                username = githubProperties['gpr.usr'] ?: System.getenv("GPR_USER")
-////                password = githubProperties['gpr.key'] ?: System.getenv("GPR_API_KEY")
-//
-//                username = "NTonakanyan"
-//                password = "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"
-//            }
-//        }
-//    }
-//}
-
-subprojects {
-    apply plugin: "maven-publish"
-    publishing {
-        repositories {
-            maven {
-                name = "GitHubPackages"
-                url = uri("https://maven.pkg.github.com/NTonakanyan/Android-Exception-library")
-                credentials {
-                    username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                    password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
-                }
-            }
-        }
-        publications {
-            gpr(MavenPublication) {
-                from(components.java)
-            }
-        }
-    }
 }
