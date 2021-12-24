@@ -1,3 +1,18 @@
-"publishConfig": {
-   "@NTonakanyan:registry": "https://npm.pkg.github.com"
- }
+{
+  "name": "exception_library",
+  "version": "1.0.0",
+  "description": "",
+  "main": "package: @NTonakanyan/Android-Exception-library",
+  "scripts": {
+    "test": "package: @NTonakanyan/Android-Exception-library"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NTonakanyan/Android-Exception-library"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "Narek Tonakanyan",
+  "license": "LICENSE"
+}
