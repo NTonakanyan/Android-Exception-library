@@ -1,7 +1,0 @@
-<distributionManagement>
-    <repository>
-        <id>github</id>
-        <name>GitHub OWNER Apache Maven Packages</name>
-        <url>https://maven.pkg.github.com/96596325/Android-Exception-library</url>
-    </repository>
-</distributionManagement>

@@ -51,27 +51,72 @@ dependencies {
     implementation 'com.airbnb.android:lottie:4.2.1'
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            bar(MavenPublication) {
-                groupId = "com.exeption.library"
-                artifactId = 'exeption-library'
-                version = '0.2.5'
-                artifact("$buildDir/outputs/aar/exeption-library-release.aar")
-            }
+//afterEvaluate {
+//    publishing {
+//        publications {
+//            bar(MavenPublication) {
+//                groupId = "com.exeption.library"
+//                artifactId = 'exeption-library'
+//                version = '0.2.5'
+//                artifact("$buildDir/outputs/aar/exeption-library-release.aar")
+//            }
+//        }
+//        repositories {
+//            maven {
+//                name = "GitHubPackages"
+//                /**
+//                 *  Configure path of your package repository on Github
+//                 *  Replace GITHUB_USERID with your/organisation Github userID and REPOSITORY with the repository name on GitHub
+//                 **/
+//                url uri("https://maven.pkg.github.com/96596325/Android-Exception-library")
+//                credentials {
+//                    username = "NTonakanyan"
+//                    password = "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"
+//                }
+//            }
+//        }
+//    }
+//}
+
+/**Create github.properties in root project folder file with gpr.usr=GITHUB_USER_ID  & gpr.key=PERSONAL_ACCESS_TOKEN**/
+//def githubProperties = new Properties()
+//githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
+
+
+def getVersionName = { ->
+    return "0.2.5" // Replace with version Name
+}
+
+def getArtificatId = { ->
+    return "exeption-library" // Replace with library name ID
+}
+
+publishing {
+    publications {
+        bar(MavenPublication) {
+            groupId 'com.enefce.libraries'
+            artifactId getArtificatId()
+            version getVersionName()
+            artifact("$buildDir/outputs/aar/${getArtificatId()}-release.aar")
         }
-        repositories {
-            maven {
-                name = "GitHubPackages"
-                /** Configure path of your package repository on Github
-                 *  Replace GITHUB_USERID with your/organisation Github userID and REPOSITORY with the repository name on GitHub
-                 */
-                url uri("https://maven.pkg.github.com/96596325/Android-Exception-library")
-                credentials {
-                    username = "NTonakanyan"
-                    password = "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"
-                }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            /** Configure path of your package repository on Github
+             *  Replace GITHUB_USERID with your/organisation Github userID and REPOSITORY with the repository name on GitHub
+             */
+            url uri("https://maven.pkg.github.com/96596325/Android-Exception-library")
+
+
+            credentials {
+                /**Create github.properties in root project folder file with gpr.usr=GITHUB_USER_ID  & gpr.key=PERSONAL_ACCESS_TOKEN**/
+//                username = githubProperties['gpr.usr'] ?: System.getenv("GPR_USER")
+//                password = githubProperties['gpr.key'] ?: System.getenv("GPR_API_KEY")
+
+                username = "NTonakanyan"
+                password = "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"
             }
         }
     }
