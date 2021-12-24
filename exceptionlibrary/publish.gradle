@@ -1,7 +1,7 @@
 apply plugin: 'maven-publish'
 
-def LIB_GROUP_ID = 'com.exception.libraries'
-def LIB_ARTIFACT_ID = 'exceptionlib'
+def LIB_GROUP_ID = 'com.github.NTonakanyan'
+def LIB_ARTIFACT_ID = 'exceptionlibrary'
 def LIB_VERSION = '0.3.0'
 
 task sourceJar(type: Jar) {
@@ -14,9 +14,7 @@ publishing {
         maven {
             name = "GithubPackages"
             url = uri("https://maven.pkg.github.com/NTonakanyan/Android-Exception-library")
-            credentials {
 
-            }
         }
         maven {
             name = 'CustomMavenRepo'
