@@ -1,4 +1,4 @@
-package com.armboldmind.exceptionlibrarydemo
+package com.android.exceptionlibrary
 
 import org.junit.Test
 

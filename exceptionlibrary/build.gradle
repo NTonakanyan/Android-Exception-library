@@ -54,14 +54,20 @@ dependencies {
 afterEvaluate {
     publishing {
         publications {
-            aar(MavenPublication) {
-                artifactId = 'exeption-library'
+            bar(MavenPublication) {
                 groupId = "com.exeption.library"
+                artifactId = 'exeption-library'
+                version = '0.2.5'
+                artifact("$buildDir/outputs/aar/exeption-library-release.aar")
             }
         }
         repositories {
             maven {
-                url "https://maven.pkg.github.com/96596325/test"
+                name = "GitHubPackages"
+                /** Configure path of your package repository on Github
+                 *  Replace GITHUB_USERID with your/organisation Github userID and REPOSITORY with the repository name on GitHub
+                 */
+                url uri("https://maven.pkg.github.com/96596325/Android-Exception-library")
                 credentials {
                     username = "NTonakanyan"
                     password = "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"

@@ -1,4 +1,4 @@
-package com.armboldmind.exceptionlibrary
+package com.android.exceptionlibrary
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

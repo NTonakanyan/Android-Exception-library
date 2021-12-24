@@ -1,4 +1,4 @@
-package com.armboldmind.exceptionlibrarydemo
+package com.android.exceptionlibrarydemo
 
 import android.annotation.SuppressLint
 import android.os.Bundle

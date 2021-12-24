@@ -1,7 +1,7 @@
-package com.armboldmind.exceptionlibrarydemo
+package com.android.exceptionlibrarydemo
 
 import android.app.Application
-import com.armboldmind.exceptionlibrary.startExceptionHandler
+import com.android.exceptionlibrary.startExceptionHandler
 
 class Application : Application() {
 

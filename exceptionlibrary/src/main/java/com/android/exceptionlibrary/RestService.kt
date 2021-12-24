@@ -1,4 +1,4 @@
-package com.armboldmind.exceptionlibrary
+package com.android.exceptionlibrary
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

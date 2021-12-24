@@ -1,4 +1,4 @@
-package com.armboldmind.exceptionlibrary
+package com.android.exceptionlibrary
 
 import retrofit2.Call
 import retrofit2.http.Body

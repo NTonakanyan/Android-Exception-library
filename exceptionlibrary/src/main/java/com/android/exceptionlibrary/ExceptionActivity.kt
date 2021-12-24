@@ -1,9 +1,9 @@
-package com.armboldmind.exceptionlibrary
+package com.android.exceptionlibrary
 
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.armboldmind.exceptionlibrary.databinding.ActivityExceptionBinding
+import com.android.exceptionlibrary.databinding.ActivityExceptionBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
