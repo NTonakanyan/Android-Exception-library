@@ -2,7 +2,7 @@ apply plugin: 'maven-publish'
 
 def LIB_GROUP_ID = 'com.github.NTonakanyan'
 def LIB_ARTIFACT_ID = 'exceptionlibrary'
-def LIB_VERSION = '0.3.7'
+def LIB_VERSION = '0.3.8'
 
 task sourceJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
