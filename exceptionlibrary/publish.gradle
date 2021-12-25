@@ -1,8 +1,8 @@
 apply plugin: 'maven-publish'
 
 def LIB_GROUP_ID = 'com.github.NTonakanyan'
-def LIB_ARTIFACT_ID = 'exception-library'
-def LIB_VERSION = '0.5.1'
+def LIB_ARTIFACT_ID = 'exceptionlibrary2'
+def LIB_VERSION = '0.0.23'
 
 task sourceJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
@@ -13,7 +13,7 @@ publishing {
     repositories {
         maven {
             name = "GithubPackages"
-            url = uri("https://maven.pkg.github.com/NTonakanyan/Android-Exception-library")
+            url = uri("https://maven.pkg.github.com/NTonakanyan/test")
             credentials {
                 username = project.findProperty("gpr.user") ?: System.getenv("USER")
                 password = project.findProperty("gpr.key") ?: System.getenv("PERSONAL_ACCESS_TOKEN")
@@ -21,27 +21,65 @@ publishing {
         }
         maven {
             name = 'CustomMavenRepo'
-            url = "file://${buildDir}/repo"
+            url = "${buildDir}/repo"
         }
     }
     publications {
         gpr(MavenPublication) {
+
             groupId LIB_GROUP_ID
             artifactId LIB_ARTIFACT_ID
             version LIB_VERSION
+
             artifact("$buildDir/outputs/aar/exceptionlibrary-debug.aar")
             artifact(sourceJar)
 
             pom.withXml {
-                def dependenciesNode = asNode().appendNode('dependencies')
+                final dependenciesNode = asNode().appendNode('dependencies')
 
-                //Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
-                configurations.api.allDependencies.each {
-                    def dependencyNode = dependenciesNode.appendNode('dependency')
-                    dependencyNode.appendNode('groupId', it.group)
-                    dependencyNode.appendNode('artifactId', it.name)
-                    dependencyNode.appendNode('version', it.version)
+                ext.addDependency = { Dependency dep, String scope ->
+                    if (dep.group == null || dep.version == null || dep.name == null || dep.name == "unspecified")
+                        return // invalid dependencies should be ignored
+
+                    final dependencyNode = dependenciesNode.appendNode('dependency')
+                    dependencyNode.appendNode('artifactId', dep.name)
+
+                    if (dep.version == 'unspecified') {
+                        dependencyNode.appendNode('groupId', project.ext.pomGroupID)
+                        dependencyNode.appendNode('version', project.ext.pomVersion)
+                        System.println("${project.ext.pomGroupID} ${dep.name} ${project.ext.pomVersion}")
+                    } else {
+                        dependencyNode.appendNode('groupId', dep.group)
+                        dependencyNode.appendNode('version', dep.version)
+                        System.println("${dep.group} ${dep.name} ${dep.version}")
+                    }
+
+                    dependencyNode.appendNode('scope', scope)
+                    // Some dependencies may have types, such as aar, that should be mentioned in the POM file
+                    def artifactsList = dep.properties['artifacts']
+                    if (artifactsList != null && artifactsList.size() > 0) {
+                        final artifact = artifactsList[0]
+                        dependencyNode.appendNode('type', artifact.getType())
+                    }
+
+                    if (!dep.transitive) {
+                        // In case of non transitive dependency, all its dependencies should be force excluded from them POM file
+                        final exclusionNode = dependencyNode.appendNode('exclusions').appendNode('exclusion')
+                        exclusionNode.appendNode('groupId', '*')
+                        exclusionNode.appendNode('artifactId', '*')
+                    } else if (!dep.properties.excludeRules.empty) {
+                        // For transitive with exclusions, all exclude rules should be added to the POM file
+                        final exclusions = dependencyNode.appendNode('exclusions')
+                        dep.properties.excludeRules.each { ExcludeRule rule ->
+                            final exclusionNode = exclusions.appendNode('exclusion')
+                            exclusionNode.appendNode('groupId', rule.group ?: '*')
+                            exclusionNode.appendNode('artifactId', rule.module ?: '*')
+                        }
+                    }
                 }
+
+                configurations.api.getDependencies().each { dep -> addDependency(dep, "compile") }
+                configurations.implementation.getDependencies().each { dep -> addDependency(dep, "runtime") }
             }
         }
     }
