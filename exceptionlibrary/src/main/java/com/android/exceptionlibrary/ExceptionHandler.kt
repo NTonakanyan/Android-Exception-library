@@ -11,7 +11,6 @@ import android.os.Process
 import android.provider.Settings
 import kotlin.system.exitProcess
 
-
 internal object ExceptionHandler {
 
     lateinit var mApplication: Application
@@ -65,7 +64,6 @@ internal object ExceptionHandler {
             exitProcess(10)
         }
     }
-
 
     private fun getApi(): Triple<String?, String?, String?> {
         val app: ApplicationInfo? = mApplication.packageManager?.getApplicationInfo(mApplication.packageName, PackageManager.GET_META_DATA)

@@ -4,7 +4,7 @@ import android.app.Activity
 import android.app.Application
 import android.os.Bundle
 
-fun startExceptionHandler(app: Application) {
+fun initExceptionHandler(app: Application) {
     ExceptionHandler.init(app)
     app.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
         override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
