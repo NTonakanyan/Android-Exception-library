@@ -2,7 +2,7 @@ apply plugin: 'maven-publish'
 
 def LIB_GROUP_ID = 'com.github.NTonakanyan'
 def LIB_ARTIFACT_ID = 'exceptionlibrary'
-def LIB_VERSION = '0.3.2'
+def LIB_VERSION = '0.3.4'
 
 task sourceJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
@@ -19,10 +19,10 @@ publishing {
                 password = System.getenv("GITHUB_PERSONAL_ACCESS_TOKEN") ?: project.properties['GITHUB_PERSONAL_ACCESS_TOKEN']
             }
         }
-        maven {
-            name = 'CustomMavenRepo'
-            url = "file://${buildDir}/repo"
-        }
+//        maven {
+//            name = 'CustomMavenRepo'
+//            url = "file://${buildDir}/repo"
+//        }
     }
     publications {
         exceptionlib(MavenPublication) {
@@ -32,17 +32,17 @@ publishing {
 //            artifact("$buildDir/outputs/aar/droidlibrary2-release.aar")
 //            artifact(sourceJar)
 
-            pom.withXml {
-                def dependenciesNode = asNode().appendNode('dependencies')
-
-                //Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
-                configurations.api.allDependencies.each {
-                    def dependencyNode = dependenciesNode.appendNode('dependency')
-                    dependencyNode.appendNode('groupId', it.group)
-                    dependencyNode.appendNode('artifactId', it.name)
-                    dependencyNode.appendNode('version', it.version)
-                }
-            }
+//            pom.withXml {
+//                def dependenciesNode = asNode().appendNode('dependencies')
+//
+//                //Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
+//                configurations.api.allDependencies.each {
+//                    def dependencyNode = dependenciesNode.appendNode('dependency')
+//                    dependencyNode.appendNode('groupId', it.group)
+//                    dependencyNode.appendNode('artifactId', it.name)
+//                    dependencyNode.appendNode('version', it.version)
+//                }
+//            }
         }
     }
 }
