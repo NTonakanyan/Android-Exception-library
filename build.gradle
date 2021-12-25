@@ -3,7 +3,7 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven { url = uri("https://maven.pkg.github.com/NTonakanyan/Android-Exception-library") }
+        maven { url = uri("https://github.com/NTonakanyan/Android-Exception-library") }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.4'
