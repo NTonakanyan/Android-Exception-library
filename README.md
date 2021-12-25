@@ -24,7 +24,7 @@ How to implement dependecy
 ```gradle
 allprojects {
     repositories {
-	        maven { url = "https://maven.pkg.github.com/NTonakanyan/Android-Exception-library" }
+	maven { url = "https://maven.pkg.github.com/NTonakanyan/Android-Exception-library" }
     }
 }
 	
