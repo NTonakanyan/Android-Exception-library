@@ -43,3 +43,5 @@ jobs:
       env:
         USERNAME: ${{ github.actor }}
         TOKEN: ${{ secrets.GITHUB_TOKEN  }}
+        MAVEN_USERNAME: ${{ secrets.USER }}
+        MAVEN_PASSWORD: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
