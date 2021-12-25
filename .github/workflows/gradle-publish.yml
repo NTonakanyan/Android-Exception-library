@@ -41,5 +41,5 @@ jobs:
       with:
         arguments: publish
       env:
-        USERNAME: "NTonakanyan"
-        TOKEN: "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"
+        USERNAME: ${{ github.actor }}
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
