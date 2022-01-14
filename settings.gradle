@@ -3,7 +3,16 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url = "https://maven.pkg.github.com/NTonakanyan/Android-Exception-library" }
+        maven {
+            url = "https://maven.pkg.github.com/NTonakanyan/Android-Exception-library"
+//            url = "https://ntonakanyan.jfrog.io/artifactory/my-libs-release"
+            credentials {
+                username = System.getenv("USER")
+                password = System.getenv("PERSONAL_ACCESS_TOKEN")
+//                username = "narek.tonakanyan94@gmail.com"
+//                password = "AKCp8kqC8xqiz6LFhEW1onovuYJfe8DVZvWQwcMxHyLBK2DqWcv2uNqFQQzNoxvn22BB1d8k1"
+            }
+        }
     }
 }
 rootProject.name = 'Exception library demo'

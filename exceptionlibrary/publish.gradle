@@ -1,8 +1,8 @@
 apply plugin: 'maven-publish'
 
-def LIB_GROUP_ID = 'com.github.NTonakanyan'
+def LIB_GROUP_ID = 'com.github.NTonakanyan.jfrog'
 def LIB_ARTIFACT_ID = 'exception-library'
-def LIB_VERSION = '1.0.0'
+def LIB_VERSION = '1.0.2'
 
 task sourceJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
@@ -17,6 +17,8 @@ publishing {
             credentials {
                 username = project.findProperty("gpr.user") ?: System.getenv("USER")
                 password = project.findProperty("gpr.key") ?: System.getenv("PERSONAL_ACCESS_TOKEN")
+//                username = "narek.tonakanyan94@gmail.com"
+//                password = "AKCp8kqC8xqiz6LFhEW1onovuYJfe8DVZvWQwcMxHyLBK2DqWcv2uNqFQQzNoxvn22BB1d8k1"
             }
         }
         maven {
