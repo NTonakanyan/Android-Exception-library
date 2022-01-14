@@ -10,22 +10,22 @@ task sourceJar(type: Jar) {
 }
 
 publishing {
-    repositories {
-        maven {
-            name = "GithubPackages"
-            url = uri("https://maven.pkg.github.com/NTonakanyan/Android-Exception-library")
-            credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("USER")
-                password = project.findProperty("gpr.key") ?: System.getenv("PERSONAL_ACCESS_TOKEN")
+//    repositories {
+//        maven {
+//            name = "GithubPackages"
+//            url = 'https://jitpack.io'
+//            credentials {
+//                username = project.findProperty("gpr.user") ?: System.getenv("USER")
+//                password = project.findProperty("gpr.key") ?: System.getenv("PERSONAL_ACCESS_TOKEN")
 //                username = "narek.tonakanyan94@gmail.com"
 //                password = "AKCp8kqC8xqiz6LFhEW1onovuYJfe8DVZvWQwcMxHyLBK2DqWcv2uNqFQQzNoxvn22BB1d8k1"
-            }
-        }
-        maven {
-            name = 'CustomMavenRepo'
-            url = "${buildDir}/repo"
-        }
-    }
+//            }
+//        }
+//        maven {
+//            name = 'CustomMavenRepo'
+//            url = "${buildDir}/repo"
+//        }
+//    }
     publications {
         gpr(MavenPublication) {
 
