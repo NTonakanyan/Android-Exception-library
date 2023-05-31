@@ -36,7 +36,7 @@ internal object ExceptionHandler {
                     "deviceModel -> ${Build.MODEL}\n" +
                     "versionName -> ${pair.first}\n" +
                     "versionCode -> ${pair.second}\n" +
-                    "deviceModel -> ${Build.MODEL}\n" +
+                    "fingerPrint -> ${Build.FINGERPRINT}\n" +
                     "androidVersionCode -> ${Build.VERSION.SDK_INT}\n" +
                     "deviceId -> ${Settings.Secure.getString(mApplication.contentResolver, Settings.Secure.ANDROID_ID)}\n" +
                     "threadName -> ${thread.name}\n" +
